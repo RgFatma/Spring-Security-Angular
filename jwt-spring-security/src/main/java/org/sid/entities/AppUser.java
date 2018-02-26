@@ -10,6 +10,9 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.ManyToMany;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonSetter;
+
 @Entity
 public class AppUser {
 	
@@ -17,8 +20,8 @@ public class AppUser {
 	private Long id;
 	@Column(unique=true)
 	private String username;
-	private String password;
 	
+	private String password;
 	@ManyToMany(fetch=FetchType.EAGER)
 	private Collection<AppRole> roles=new ArrayList<>();
 	
@@ -47,11 +50,11 @@ public class AppUser {
 	public void setUsername(String username) {
 		this.username = username;
 	}
-
+	@JsonIgnore
 	public String getPassword() {
 		return password;
 	}
-
+	@JsonSetter
 	public void setPassword(String password) {
 		this.password = password;
 	}

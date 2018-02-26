@@ -27,7 +27,7 @@ public class TaskRestController {
 		return taskRepository.findAll();
 	}
 	
-	@PostMapping("/save")
+	@PostMapping("/tasks")
 	public Task saveTask(@RequestBody Task t)
 	{
 		return taskRepository.save(t);
